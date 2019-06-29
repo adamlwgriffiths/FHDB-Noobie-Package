@@ -1,0 +1,3 @@
+BOOT.ELF -> wLaunchELF_v4.43a 2019-01-11 (Build-41e4ebe)
+ESR.ELF -> ESR beta r9b
+GSM.ELF -> GSM_038_DB

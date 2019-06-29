@@ -1,0 +1,2 @@
+APP_MCA -> Memory Card Annihilator
+APP_OPL -> OPL

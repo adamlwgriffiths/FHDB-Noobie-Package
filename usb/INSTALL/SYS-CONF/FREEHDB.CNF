@@ -1,0 +1,141 @@
+# ----------------------------------------
+# Free HDBoot Config File
+# must be in hdd0:__sysconf:pfs:/FMCB/FREEHDB.CNF, mc?:/SYS-CONF/FREEHDB.CNF or mass:/FREEHDB.CNF
+# ----------------------------------------
+CNF_version = 1
+# ----------------------------------------
+Debug_Screen = 0
+FastBoot = 1
+ESR_Path_E1 = mass:/BOOT/ESR.ELF
+ESR_Path_E2 = mc?:/BOOT/ESR.ELF
+ESR_Path_E3 = hdd0:__sysconf:pfs:/FMCB/ESR.ELF
+pad_delay = 0
+LK_Auto_E1 = OSDSYS
+LK_Circle_E1 = OSDSYS
+LK_Cross_E1 = OSDSYS
+LK_Square_E1 = OSDSYS
+LK_Triangle_E1 = OSDSYS
+LK_L1_E1 = mass:/BOOT/HDLOADER.ELF
+LK_L1_E2 = mc?:/BOOT/HDLOADER.ELF
+LK_L1_E3 = mc?:/B?DATA-SYSTEM/HDLOADER.ELF
+LK_R1_E1 = mass:/BOOT/BOOT.ELF
+LK_R1_E2 = mc?:/BOOT/BOOT.ELF
+LK_R1_E3 = hdd0:__sysconf:pfs:/FMCB/BOOT.ELF
+LK_L2_E1 = mass:/BOOT/SMS.ELF
+LK_L2_E2 = mc?:/BOOT/SMS.ELF
+LK_L2_E3 = mc?:/B?DATA-SYSTEM/SMS.ELF
+LK_R2_E1 = mass:/BOOT/ESR.ELF
+LK_R2_E2 = mc?:/BOOT/ESR.ELF
+LK_R2_E3 = hdd0:__sysconf:pfs:/FMCB/ESR.ELF
+LK_L3_E1 = OSDSYS
+LK_R3_E1 = OSDSYS
+LK_Up_E1 = OSDSYS
+LK_Down_E1 = OSDSYS
+LK_Left_E1 = OSDSYS
+LK_Right_E1 = OSDSYS
+LK_Start_E1 = hdd0:__sysconf:pfs:/FMCB/FMCB_CFG.ELF
+LK_Start_E2 = OSDSYS
+LK_Select_E1 = OSDSYS
+hacked_OSDSYS = 1
+OSDSYS_video_mode = AUTO
+OSDSYS_Skip_Logo = 1
+OSDSYS_Skip_Disc = 0
+OSDSYS_Inner_Browser = 0
+OSDSYS_selected_color = 0x10,0x80,0xE0,0x80
+OSDSYS_unselected_color = 0x33,0x33,0x33,0x80
+OSDSYS_scroll_menu = 1
+OSDSYS_menu_x = 320
+OSDSYS_menu_y = 110
+OSDSYS_enter_x = 30
+OSDSYS_enter_y = -1
+OSDSYS_version_x = -1
+OSDSYS_version_y = -1
+OSDSYS_cursor_max_velocity = 1000
+OSDSYS_cursor_acceleration = 100
+OSDSYS_left_cursor = o006
+OSDSYS_right_cursor = o005
+OSDSYS_menu_top_delimiter = y-99Free HDBoot              c1[r0.80Version %VER%r0.00]y-00
+OSDSYS_menu_bottom_delimiter = c0r0.60y+99Use o009/o010 to browse listy-00r0.00
+OSDSYS_num_displayed_items = 7
+OSDSYS_Skip_MC = 1
+OSDSYS_Skip_HDD = 1
+
+# ----------------------------------------
+# Primary Apps
+# ----------------------------------------
+
+name_OSDSYS_ITEM_1 = Launch disc
+path1_OSDSYS_ITEM_1 = FASTBOOT
+
+name_OSDSYS_ITEM_2 = Open PS2 Loader
+path1_OSDSYS_ITEM_2 = hdd0:PP.FHDB.APPS:/APP_OPL/OPL.ELF
+path2_OSDSYS_ITEM_2 = mass:/APPS/OPL/OPL.ELF
+
+# ----------------------------------------
+# Supporting Apps
+# ----------------------------------------
+
+name_OSDSYS_ITEM_20 = LaunchELF
+path1_OSDSYS_ITEM_20 = hdd0:__sysconf:pfs:/FMCB/BOOT.ELF
+path2_OSDSYS_ITEM_20 = mass:/BOOT/BOOT.ELF
+path3_OSDSYS_ITEM_20 = mc?:/BOOT/BOOT.ELF
+
+name_OSDSYS_ITEM_21 = Graphics Synthesizer Mode Selector
+path1_OSDSYS_ITEM_21 = hdd0:__sysconf:pfs:/FMCB/GSM.ELF
+path2_OSDSYS_ITEM_21 = mass:/BOOT/GSM.ELF
+path3_OSDSYS_ITEM_21 = mc?:/BOOT/GSM.ELF
+
+name_OSDSYS_ITEM_22 = ESR
+path1_OSDSYS_ITEM_22 = hdd0:__sysconf:pfs:/FMCB/ESR.ELF
+path2_OSDSYS_ITEM_22 = mass:/BOOT/ESR.ELF
+path3_OSDSYS_ITEM_22 = mc?:/BOOT/ESR.ELF
+
+name_OSDSYS_ITEM_23 = Open PS2 Loader 8
+path1_OSDSYS_ITEM_23 = hdd0:PP.FHDB.APPS:/APP_OPL8/OPL.ELF
+path2_OSDSYS_ITEM_23 = mass:/APPS/OPL8/OPL.ELF
+
+name_OSDSYS_ITEM_24 = Simple Media System
+path1_OSDSYS_ITEM_24 = hdd0:PP.FHDB.APPS:/APP_SMS/SMS.ELF
+path2_OSDSYS_ITEM_24 = mass:/BOOT/SMS.ELF
+
+# ----------------------------------------
+# System Commands
+# ----------------------------------------
+
+name_OSDSYS_ITEM_60 = Eject disc
+path1_OSDSYS_ITEM_60 = hdd0:__sysconf:pfs:/FMCB/EJECT.ELF
+path2_OSDSYS_ITEM_60 = mass:/BOOT/EJECT.ELF
+path3_OSDSYS_ITEM_60 = mc?:/BOOT/EJECT.ELF
+
+name_OSDSYS_ITEM_61 = Reload Configuration
+path1_OSDSYS_ITEM_61 = OSDSYS
+
+name_OSDSYS_ITEM_62 = Reset System
+path1_OSDSYS_ITEM_62 = hdd0:__sysconf:pfs:/FMCB/RESET.ELF
+path2_OSDSYS_ITEM_62 = mass:/BOOT/RESET.ELF
+path3_OSDSYS_ITEM_62 = mc?:/BOOT/RESET.ELF
+
+name_OSDSYS_ITEM_63 = Shutdown System
+path1_OSDSYS_ITEM_63 = POWEROFF
+
+# ----------------------------------------
+# System Tools
+# ----------------------------------------
+
+name_OSDSYS_ITEM_90 = Free HDBoot Configurator
+path1_OSDSYS_ITEM_90 =  hdd0:__sysconf:pfs:/FMCB/FMCB_CFG.ELF
+
+name_OSDSYS_ITEM_91 = PS2Ident
+path1_OSDSYS_ITEM_91 = hdd0:/PP.FHDB.APPS/APP_PS2ID/PS2ID.ELF
+path2_OSDSYS_ITEM_91 = mass:/APPS/APP_PS2ID/PS2ID.ELF
+path3_OSDSYS_ITEM_91 = mc?:/APP_PS2ID/PS2ID.ELF
+
+name_OSDSYS_ITEM_92 = MCAnihilator
+path1_OSDSYS_ITEM_92 = hdd0:PP.FHDB.APPS:/APP_MCA2/MCA2.ELF
+path2_OSDSYS_ITEM_92 = mass:/APPS/APP_MCA2/MCA2.ELF
+path3_OSDSYS_ITEM_92 = mc?:/APP_MCA2/MCA2.ELF
+
+name_OSDSYS_ITEM_93 = HDD Checker
+path1_OSDSYS_ITEM_93 = hdd0:PP.FHDB.APPS:/APP_HDCK/HDCK.ELF
+path2_OSDSYS_ITEM_93 = mass:/APPS/APP_HDCK/HDCK.ELF
+path3_OSDSYS_ITEM_93 = mc?:/APP_HDCK/HDCK.ELF

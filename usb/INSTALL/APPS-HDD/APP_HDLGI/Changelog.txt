@@ -1,0 +1,323 @@
+﻿HDLoader Game Installer	-	2018/12/08
+------------------------------------------
+
+Changelog:
+----------
+v0.821 -	2018/12/08
+	*Disabled pad input when a PC client is connected, to improve performance.
+	*Network status will be displayed when a PC client is connected, every 10s.
+	*Fixed the problem with the soft keyboard not waiting for the circle/cross button to be released before considering the user's intended input.
+
+v0.820 -	2018/11/28
+	*Fixed incorrect logic for handling disc types.
+
+v0.820 - 	2018/11/25
+	*Fixed the problem with semaphores not being freed when the client disconnects.
+	*Fixed the problem with PlayStation discs being accepted as valid discs.
+	*Fixed the problem with the error message for unsupported discs not getting displayed.
+
+v0.820 - 	2018/11/24
+	*PS2SDK update: fixed timeouts causing an overflow of the SetAlarm tick parameter.
+	*Reordered code for disconnecting clients, to prevent the possibility of disconnecting a new client that reuses the same client slot.
+
+v0.819 - 	2018/11/18
+	*Game list will now be loaded once during bootup, to reduce the time taken for the first connection.
+	*Attempted to make the data connection close gracefully regardless of the OS used, with all data successfully sent and received by the other end.
+
+v0.819 - 	2018/11/17
+	*Fixed the problem of the server getting stuck due to the close command being processed before all data is written, when a game is closed after installation.
+	*Network support is now initialized earlier and its status checked later, for faster bootup times.
+	*Fixed the design problem that allowed the remote client to access the game list while it is being updated at boot.
+	*Font widths are now cached under the glyph atlas, to potentially reduce the lag when messages are first drawn.
+
+v0.818 - 	2018/11/05
+	*Updated USBHDFSD for better compatibility with disks that have no partition table.
+
+v0.818 -	2018/10/28
+	*Fixed hang at boot and when settings are changed, if Ethernet link settings were set.
+	*Fixed saving of settings, when booting from the HDD unit.
+	*Reading & writing to the HDD will be grouped, to improve performance.
+	*Moved updating of game list to when the connection is closed/lost, to improve on waiting times between installations.
+	*Fixed crash when the game list is updated after the connection is closed, due to the menu trying to access it.
+	*Compiled with PS2SDK updates: new NETMAN module for better reliability. New USBHDFSD module for proper access of USB devices.
+	*Fixed incorrect logic for reading game list at boot, shortening bootup.
+
+v0.817 -	2018/09/09
+	*Improved startup time by reducing the number of checks on the connection state.
+	*Increased FILEIO buffer size back to 512KB, for reduced overhead.
+	*Compiled with PS2SDK update: new NETMAN module for better reliability and efficient use of SIF0.
+	*Compiled with FreeType v2.9.1.
+
+v0.816 -	2018/06/18
+	*Re-released with the corrected PFS module.
+
+v0.816 -	2018/06/12
+	*Re-released with the corrected PFS and USBHDFSD modules.
+
+v0.816 -	2018/06/09
+	*Improved rendering of button labels between half-width and full-width characters.
+	*Fixed freeze when network connection is unavailable.
+	*Updated PFS to correct creation of "Your Saves" folder.
+	*Fixed save-file generation.
+	*Settings will be automatically saved once the defaults are loaded,
+	 if the user never saved the settings before.
+	*Improved network performance.
+
+v0.815 -	2018/06/04
+	*Updated font-rendering for the soft keyboard and various menus, to work properly with the variable-width fonts.
+	*Updated network protocol for faster game-list transmission.
+	*Changed I/O strategy: 64KB R/W buffer, with 32x512KB ring buffer.
+	*Added support for DHCP.
+	*Added support for title-sorting (controlled from the PlayStation 2).
+	*Added options screen.
+	*Network settings are now stored in the HDLGameInstaller save, on the HDD unit.
+	*Added IP address indicator to main menu.
+	*Added free disk space indicator to the main menu.
+	*Network Settings can now be changed from the options screen.
+	*Changed internal game list format to store titles in UTF-8 instead, for memory savings.
+	*Fixed booting from the HDD unit.
+	*Added key-repetition functionality to the soft keyboard and menus.
+
+v0.814C -	2018/05/31
+	*Updated with latest PS2SDK fixes.
+	*Adjusted font rendering to advance the cursor based on input from FreeType.
+	*Organized deinitialization code for cleaner shut-downs.
+	*Replaced network status screen code.
+	*Added flow control status to network status screen.
+	*Converted hardcoded labels on the network status screen into translatable labels.
+	*Updated translation template.
+
+v0.814B -	2018/05/29
+	*Corrected inability to reconnect if the connection is lost right before a game is copied.
+
+v0.814A -	2018/05/26
+	*Revamped protocol to have as little overhead during file transfer, as possible.
+	 Opens port 45062, which is dedicated for data transfer.
+	*Removed cancel button from remote access status screen.
+	 It is really challenging to make it work well.
+	*Moved seeking to be done before data reading/writing is started.
+	 Resumption of transfers might have not been working correctly.
+	*Attempted to fix texture rendering, of fonts and graphics.
+	 Forgot to add 0.5 to all UV coordinates.
+
+v0.814 -	2018/05/23
+	*Updated with the latest PS2SDK fixes.
+	*Major UI rework, to utilize the newer code from my other projects.
+	*Replaced old, redundant Unicode helper code with functions from the PS2SDK.
+	*Replaced button icons with new icons from Berion.
+	*Added new icons for device selection.
+	*The select and cancel buttons will now fit the console's region.
+	 e.g. cross is select for US consoles, while circle is select for Japanese consoles.
+	*Long titles will now be shortened when displayed on the games list.
+	 When the long title is highlighted, it will be automatically scrolled.
+	*Improved network reliability and performance.
+	*Improved server deinitialization code, which may prevent a crash when closing the app.
+	*Increased block size, for improved transfer performance (256KB x 4 -> 4MB x 4).
+	*Improved design of I/O manager, for greatly improved game reading (PS2 -> PC) performance.
+
+v0.813 -	2017/02/25
+	*Fixed inability to terminate game copying via network.
+	*Improved network reliability and performance.
+	*Improved stability.
+	*Removed support for compressed transfers.
+
+v0.812 -	2017/02/18
+	*Improved network support reliability and performance.
+	*Replaced fonts with the Google Noto fonts.
+
+v0.811 -	2017/02/11
+	*Improved network support reliability.
+	*Fixed inability to delete game after a failed installation.
+	*Reduced redundant code within server.
+	*New I/O subsystem for (slightly) better performance.
+	*Fixed loading of the game's savedata.
+
+v0.810 -	2017/02/04
+	*Improved network support reliability.
+	*Fixed automatic reconnection functionality.
+	*Added support for compressed transfers.
+	*Installed games can now be read back to the PC.
+
+v0.809A -	2016/09/24
+	*Updated to use the new NETMAN module.
+	*Updated to use the new HDD module.
+
+v0.809 -	2015/12/16
+	*Updated to install OPL v0.9.3.
+	*Updated to build with the latest PS2SDK revision and to have the fixes from it.
+	*Fixed layer break value calculation.
+	*Added support for reconnecting to resume an incomplete installation by the client.
+	*Changed game list reading to read the HDLoader game information directly with a devctl call, to work around the performance issues that the APA driver struggles with when dealing with a HDD containing many partitions.
+
+v0.808 -	2014/06/23
+	*Updated to work properly with the modern PS2SDK.
+	*Ported the fixes to the PS2SDK over.
+	*Corrected old mistakes that led to an insufficiently aligned buffer being used for I/O operations with the HDD.
+	*Increased the size of the buffer that contains the path of the savedata icon, which is used during installations.
+	*Changed the icon selector's colour to light red and increased its opacity.
+	*Added memset() statements to initialized uninitialized values. This gives a cleaner installation.
+	*Fixed the problem with garbage appearing within the OSD title line 1 and 2 fields, whenever the icon data is missing.
+	*Corrected logic errors within the icon loading code.
+	*Greatly increased the number of buffers used by APA, which greatly improves performance when the list of games is generated.
+	*Enhanced data receiving and transmission code, to totally eliminate the a possibility of errors occuring because the packet header is partially transferred (regardless of whether it's currently even possible or not).
+	*Corrected a mistake within HDLFS: offset 4 is unused, while offset 6 of the HDLoader game partition structure is probably a version field and 0x1337 should not be set there. Thanks to l_Oliveira!
+	*Increased the server stack size, since it was overflowing.
+	*Updated DISKLOAD to Open PS2 Loader commit 025a6bb.
+
+v0.807 -	2013/08/25
+	*Updated HDLFS to flush the HDD cache when the partition is unmounted. While this probably does nothing (The cache won't be used if normal READ/WRITE SECTOR commands are used, will it?), I'm doing it to comply with Sony's specifications.
+	*Updated art assets.
+	*Increased the stack size of the client thread, since the server was freezing up on my SCPH-10000 whenever savedata icon is used for the installation.
+	*Added a semaphore that prevents a remote installation from taking place, while a game is being installed locally on the PS2.
+	*This program can now be booted from the HDD... as long as it isn't launched by uLaunchELF (uLaunchELF doesn't specify the full path to the program, when it's launched from the HDD).
+	*The HDD unit will no longer be switched off when the program quits.
+
+v0.806 -	2013/08/04
+	*Updated ATAD module (PS2SDK update).
+	*Fixed installation of games that are 4GB or larger in size, on disks that are larger than 250GB.
+	*Added a partition slice limit to HDLFS, as I forgot that the HDLoader game format uses a 32-bit value to record the size of each slice (4GB partition parts are the largest it can support).
+	*Removed old, broken code from HDLFS which automatically adjusted the size of the game as data is written. To begin with, it doesn't do anything because the size of the game is recorded during formatting and can't be adjusted afterwards. It was originally there to make its write function behave like how the the standard write function would behave when data is written to beyond the end of the file.
+	*Fixed the installation of the 2nd layer (of DVD9 games) from HDLGManClient. Please reinstall your DVD9 games that were installed via HDLGManClient!
+	*Tidied up the server functions.
+	*Fixed the logic of the connection state checking functions of HDLGManClient (Should now report client-server version mismatches properly).
+	*Modified HDLGManClient to report connection losses instead of stating that the operation failed (Makes things less confusing for the user, as some connection-related problems resulted in error messages that suggested a hardware problem).
+
+v0.805R -	2013/07/26
+	*Added Portuguese localization.
+	*Updated Japanese localization.
+	*Increased TCP window size to 65535 bytes and the FileXIO RPC I/O buffer to 512KB, for enhanced performance.
+	*The startup device will now be checked, and the program will quit if it was started from an unsupported device.
+	*The program will now quit if the resource files (e.g. fonts) cannot be loaded, instead of getting stuck at a black screen.
+
+v0.805 -	2013/07/23
+	*Added French localization.
+	*Updated SMAP driver.
+	*Removed calls to sceCdStandby() and sceCdDiskReady() within ShowWaitForDiscDialog(), to prevent the program from freezing up on newer consoles if a disc is not inserted. sceCdGetDiscType() is the right way to determine whether a disc is inserted or not.
+	*Corrected the GP saving and restoration macros within CrashReporter.c.
+	*Updated Diskload/Mini OPL to the latest revision.
+	*Changed optimization mode to Os.
+	*With the update to fileXio in the PS2SDK, the I/O buffer of fileXio has been set to 128KB.
+
+v0.804 -	2013/07/18
+	*Updated the SMAP driver (See the PS2SDK update for today).
+	*Updated the network status screen to display the MAC address and data that will probably help network debugging.
+	*The Ethernet link speed and duplex settings can now be specified manually.
+	*Removed power-off interrupt handling, since installations should not be interrupted. The power button will not be usable unless the program ends. The console may still be switched off remotely from the PC client, however.
+	*Added support for pad button repeat delay.
+	*Fixed misnamed German localization files.
+	*Adjusted initialization code, since the homebrew I/O functions are not multi-thread safe. The UI will be initialized outside of the initialization thread, and the drivers that provide access to the supported bootup devices will be loaded before the initialization thread starts too.
+
+v0.803 -	2013/07/17
+	*Updated the SMAP driver (See the PS2SDK update for today).
+	*Added a display for the link state and transfor mode to the network status screen.
+	*The network status screen can now be accessed from the remote connection status screen as well.
+	*Re-enabled program optimization. I made a change to the Makefile of v0.802, but forgot that optimization is disabled by default.
+	*Added Dutch localization.
+
+v0.802 -	2013/07/14
+	*The compatibility mode flags were being set and loaded from the HDL compatibility mode flags field. Should have been the OPL flags.
+	*Changed the images from bitmaps to PNG images, to save space.
+	*Cleaned up ShowMessageBox().
+	*Added the German, Italian and Spanish localizations.
+	*Updated mini OPL/diskload to the latest version from Bitbucket, as of today's commit.
+
+v0.801 -	2013/07/12
+	*Added a network status screen (Press SELECT to access it).
+	*Games are now adjusted by pressing the CIRCLE button at the main menu instead of SELECT.
+	*Fixed the loading of the IP address configuration. The file size was being retrieved from the wrong call to lseek().
+	*Cleaned up IP address parsing code to remove the compiler warning.
+
+v0.800 -	2013/07/10
+	*Updated strings and labels.
+	*Updated credits.
+	*First public release.
+
+v0.705 -	2013/07/09
+	*Updated strings and labels.
+	*Added a call to PollSema before the actual call to WaitSema is made within SyncFlipFB(). That way, the screen won't be redrawn prematurely before a VBlank start event occurs.
+	*Added a call to SyncFlipFB() before the VRAM memory clear in UploadDefaultResources(), to send too unsent DMA tags to the GS. gsKit sometimes crashes because gsKit_send() assumes that the DMA tag buffer is empty.
+
+v0.704	-	2013/07/07
+	*Updated the UI to support multi-languages.
+	*Font file is no longer embedded within the program, since not all characters within the font are required at all times.
+	*FreeType support now includes support for a sub-font, so that Japanese characters can be displayed at all times (alongside the language used for the UI).
+	*Changed DejaVuSans to DejaVuSerif, as the former seemed to be causing a bus error whenever the 'W' letter is attempted to be loaded (Fault lies within FreeType, but this is a workaround). D:
+	*Updated UI to be clearer and easier to use (e.g. buttons were enlarged and the entire button is highlighted instead of just the text).
+
+v0.703	-	2013/07/02
+	*Added a filter that converts full-width ASCII characters to just ASCII characters.
+	*Improved the algorithm that selects the sizes of partitions to create, in order to minimize space wastage.
+	*With the updated bin2o from the PS2SDK, bin2o is now used in favour of bin2c.
+	*Adjusted the font size and positioning, along with the positions of the legend icons.
+	*Added a folder to the documents folder that will contain the licenses of the 3rd party resources used.
+
+v0.702	-	2013/06/19
+	*Converted the system to use UTF-8 in its client<->server data exchanges.
+	*Converted the system to save the game's full titles as UTF-8 titles.
+	*Converted the system to use Unicode (wide characters) internally.
+	*Fixed up the FreeType font support code (Reinitialization code didn't re-upload the CLUT, and there was a general lack of error checking code).
+	*Cleaned up the code that uses those GAME_TITLE_MAX_LEN* and OSD_TITLE_MAX_LEN* definitions, since they shouldn't be used with anything not related to processing titles for the HDDOSD. (Memory Card titles are a different case and should not use these definitions)
+	*Copied the clock month field fix for the IOP HDD module over from the PS2SDK.
+	*Added a device polling thread to suppliment the save data device selection menu.
+
+v0.701	-	2013/06/12
+	*Added a prototype system that automatically wraps the text in dialog boxes.
+	*Temporarily disabled Japanese character input support in the soft keyboard in an attempt to debug it.
+	*Changed the font system to FreeType.
+
+v0.700	-	2013/04/29
+	*Disabled the building of crc16.o as logo decryption has been disabled.
+	*Changed how the HDLoader game titles are set or changed, to solve the problem where by reserved characters (e.g. a colon character) cannot be used in game titles.
+
+v0.68	-	2013/04/27
+	*Fixed up the init default OSD resources command on the server, since it wasn't initializing the OSD resource configuration context structure (results in undefined behaviour as some of its fields contained undefined values). This affected the editing of game installations from the client.
+	*Increased the character limit of the main game title to 80 characters (80xSJIS characters=160 bytes).
+	*Standardized the title length definitions across the source code of the client and server/installer.
+	*Modified the soft keyboard to support strings that are longer than the keyboard's display.
+	*Added a cancel button to the client, so you may now cancel ongoing game installations.
+	*Incomplete game installations that were initiated by a remote client are now removed when an installation either fails or is aborted.
+
+v0.67B	-	2013/04/26
+	*Fixed program logic when the user cancels an operation.
+	*Modified the menu functions to accept paged menus, but this is not in use.
+	*Continued working on Japanese input support. No Kanji support yet, sorry (too much work to load ATOK and test it properly, so I'll have to leave it to someone else).
+	*Added a icon preview function. Icons that cannot/should not be displayed will simply not be displayed. It won't play animations as I can't figure out how they are to be played, plus it's horribly bugged in a way (Most icons have their vertices screwed up horribly) that I can't and won't fix due to the intensity of my current involvement in this project. I'm not from the digital design/development track, so please help!
+	*Corrected some of the legend icons.
+	*Updated diskload/mini OPL.
+
+v0.67A	-	2013/04/12
+	*Unified the functions in both the install and edit functions that install OSD icons and which only update the OSD title strings.
+
+v0.67	-	2013/04/11
+	*Cleaned up code.
+	*Upgraded text encoding conversion functions.
+	*Removed remote client disconnection function as that conflicts with the multithreaded nature of the TCP/IP stack.
+
+v0.66	-	2013/03/13
+	*Added new, GUI-based, remote administation tool.
+	*Improved overall stability (Many, many bug fixed yet again).
+	*Added icon source selection support on both the remote administation tool and the server itself.
+	*Fixed FONTM. The issue with character corruption has been solved, although some minor artefacts still remain (Probably a different issue).
+
+v0.65	-	2013/03/04
+	*Added working network support.
+	*Added support for SJIS (JIS X 208 compliant) font display (rom0:FONTM).
+	*Fixed SJIS character support.
+	*Fixed SJIS -> Unicode conversion.
+	*Split off the main game title from the OSD title, so that the user can have more choices.
+	*Embedded the OSD resources into the main ELF.
+	*Changed how the system is initialized at startup.
+	*Split off the UI code from the business logic, to make the installation faster.
+	*Fixed bugs related to the capacity calculation of the partitions, which affects how the installer would determine the sizes of the partitions to create.
+	*Fixed HDLFS, as the formatting code had the same calculation issues above as the capacity calculating code.
+	*Added support for lseek() in HDLFS.
+	*Reverted how mount(), open(), close() and unmount() worked in HDLFS, as an APA partition can be mounted (Opposed to the entire disk, which may contain other partitions formatted with a different filesystem).
+	*Added DEVCTL commands into HDLFS to facilitate better game property management.
+	*Fixed icon conversion as some parameters were not converted.
+	*Changed how the icon.sys file is generated, to reduce redundant code and to allow functions that parse and rebuild icon.sys to be implemented.
+	*Added an ETA indicator onto the game installation screen.
+	*Modified how the game list is loaded and maintained in the UI, as the game list may be updated remotely.
+	*Fixed how icons are checked for in existing game saves.
+	*The common IRX modules are now referenced from the PS2SDK directly and are no longer bundled as part of this source package.
+
+*** Start of log file (previous changes were really great in number and mostly forgotten anyway) ***

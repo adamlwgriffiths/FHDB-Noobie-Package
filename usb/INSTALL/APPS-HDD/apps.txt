@@ -1,0 +1,7 @@
+APP_ESRGUI -> GUI frontend to ESR (includes ESR)
+APP_HDCK -> HDD Checker
+APP_HDLGI -> HDL Game Installer
+APP_MCA -> Memory Card Annihilator
+APP_OPL -> OPL
+APP_OPL8 -> OPL8 legacy support
+APP_SMS -> Simple Media System
